@@ -108,7 +108,7 @@ def makeBraille(in_file,out_file = "braille_out.txt"):
     if not braille: print("\tNo braille, no write!");return False
     try:
         with open(out_file,"w") as file:
-            file.write(braille)
+            file.write(braille+"\n")
         return "-SUCCESS- File "+`out_file`+" written to disk."
     except:
         error = ("-ERROR- Problem storing saving to file: "+`out_file`)
