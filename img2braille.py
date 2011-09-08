@@ -30,7 +30,7 @@ def mapBraille(index):
     return result
 
 def bin2index(b_img, sub_w = 2, sub_h = 4):
-    """Returns [x][y] list of  integer values. b_img must have coorect size!"""
+    """Returns [x][y] list of  integer values. b_img must have correct size!"""
     result = []
     b_img_w = len(b_img)
     b_img_h = len(b_img[0])
@@ -94,7 +94,8 @@ def getBraille(in_file, encoding = "utf-8"):
     """Returns braille string, based on image in_file"""
     try:
         image = Image.open(in_file)
-        res_img2bin         = img2bin(image,2,4)
+        bw_image = image.convert("1") #Convert to BW(Black or White)
+        res_img2bin         = img2bin(bw_image,2,4)
         res_bin2index       = bin2index(res_img2bin,2,4)
         return index2str(res_bin2index,"\n").encode(encoding).strip()
         
